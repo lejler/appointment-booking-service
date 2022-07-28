@@ -5,6 +5,7 @@ import de.layla.terminbehoerde.appointment.AppointmentModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
@@ -13,7 +14,9 @@ import java.util.ResourceBundle;
 public class MainWindowController implements Initializable {
 
     @FXML
-    public TextField date;
+    private TextField date;
+    @FXML
+    private Button bookAppointment;
     @FXML
     private TextField name;
     @FXML

@@ -1,6 +1,5 @@
 package de.layla.terminbehoerde.mainwindow;
 
-import de.layla.terminbehoerde.StartApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -10,7 +9,7 @@ import java.io.IOException;
 public class MainWindow {
 
     public void start() {
-        FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("MainWindowView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("MainWindowView.fxml"));
         Stage stage = new Stage();
         Scene scene = null;
         try {

@@ -28,7 +28,8 @@
     <TextField fx:id="region" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7"/>
 
     <Label text="Datum" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
-    <TextField fx:id="date" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8"/>
+    <ComboBox fx:id="day" GridPane.columnIndex="1" GridPane.rowIndex="8" maxWidth="Infinity"/>
+    <ComboBox fx:id="month" GridPane.columnIndex="2" GridPane.rowIndex="8" maxWidth="Infinity"/>
 
     <Label text="Uhrzeit (von - bis)" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
     <TextField fx:id="timeEarliest" GridPane.columnIndex="1" GridPane.rowIndex="9"/>

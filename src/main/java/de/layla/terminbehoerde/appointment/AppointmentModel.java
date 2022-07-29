@@ -5,18 +5,21 @@ public class AppointmentModel {
     private String timeEarliest;
     private String timeLatest;
     private String region;
-    private String date;
+    private Integer day;
+    private String month;
 
-    public AppointmentModel(String timeEarliest, String timeLatest, String region, String date) {
+    public AppointmentModel(String timeEarliest, String timeLatest, String region, Integer day, String month) {
         this.timeEarliest = timeEarliest;
         this.timeLatest = timeLatest;
         this.region = region;
-        this.date = date;
+        this.day = day;
+        this.month = month;
     }
 
-    public AppointmentModel(String region, String date) {
+    public AppointmentModel(String region, Integer day, String month) {
         this.region = region;
-        this.date = date;
+        this.day = day;
+        this.month = month;
         this.timeEarliest = "00:00";
         this.timeLatest = "24:00";
     }
@@ -27,7 +30,8 @@ public class AppointmentModel {
                 "timeEarliest='" + timeEarliest + '\'' +
                 ", timeLatest='" + timeLatest + '\'' +
                 ", region='" + region + '\'' +
-                ", date=" + date +
+                ", day=" + day +
+                ", month='" + month + '\'' +
                 '}';
     }
 
@@ -55,11 +59,20 @@ public class AppointmentModel {
         this.region = region;
     }
 
-    public String getDate() {
-        return date;
+
+    public Integer getDay() {
+        return day;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDay(Integer day) {
+        this.day = day;
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
     }
 }

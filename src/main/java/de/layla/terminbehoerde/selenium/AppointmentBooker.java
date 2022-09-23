@@ -16,8 +16,10 @@ public class AppointmentBooker {
     private final FirefoxOptions options = new FirefoxOptions();
     private final WebDriver driver;
     private final AppointmentModel appointmentModel;
+    private String chosenMonth;
+    private int chosenDay;
 
-    private final ArrayList<WebElement> availableDays = new ArrayList();
+    private final ArrayList<WebElement> availableDays = new ArrayList<>();
 
     public AppointmentBooker(AppointmentModel appointmentModel) {
         WebDriverManager.chromedriver().setup();
@@ -29,9 +31,22 @@ public class AppointmentBooker {
         try {
             getCalendarPage();
             List<WebElement> tables = driver.findElements(By.tagName("table"));
+            ArrayList<WebElement> temp = new ArrayList<>();
+            ArrayList<String> months = new ArrayList<>();
+
             for (WebElement table : tables) {
-                List<WebElement> months = table.findElements(By.className("month"));
+                temp.add(table.findElement(By.className("month")));
             }
+
+            for (WebElement tempMonth : temp) {
+                String[] split = tempMonth.getAttribute("innerHTML").split(" ");
+                months.add(split[0]);
+            }
+
+            for (String month : months) {
+                if (month.equalsIgnoreCase(appointmentModel.getMonth())) chosenMonth = month;
+            }
+
         } finally {
             driver.quit();
         }

@@ -6,9 +6,9 @@ public class AppointmentModel {
     private String timeLatest;
     private String region;
     private Integer day;
-    private String month;
+    private Month month;
 
-    public AppointmentModel(String timeEarliest, String timeLatest, String region, Integer day, String month) {
+    public AppointmentModel(String timeEarliest, String timeLatest, String region, Integer day, Month month) {
         this.timeEarliest = timeEarliest;
         this.timeLatest = timeLatest;
         this.region = region;
@@ -16,7 +16,7 @@ public class AppointmentModel {
         this.month = month;
     }
 
-    public AppointmentModel(String region, Integer day, String month) {
+    public AppointmentModel(String region, Integer day, Month month) {
         this.region = region;
         this.day = day;
         this.month = month;
@@ -68,11 +68,11 @@ public class AppointmentModel {
         this.day = day;
     }
 
-    public String getMonth() {
+    public Month getMonth() {
         return month;
     }
 
-    public void setMonth(String month) {
+    public void setMonth(Month month) {
         this.month = month;
     }
 }

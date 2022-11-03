@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 public class MainWindowController implements Initializable {
 
     @FXML
-    private ComboBox<String> month;
+    private ComboBox<Month> month;
     @FXML
     private ComboBox<Integer> day;
     @FXML
@@ -40,7 +40,7 @@ public class MainWindowController implements Initializable {
             this.day.getItems().add(i);
         }
         for (int i = 0; i < Month.values().length; i++) {
-            this.month.getItems().add(String.valueOf(Month.values()[i]));
+            this.month.getItems().add(Month.values()[i]);
         }
     }
 
@@ -61,11 +61,11 @@ public class MainWindowController implements Initializable {
         System.out.println(fetchAppointmentData());
     }
 
-    public ComboBox<String> getMonth() {
+    public ComboBox<Month> getMonth() {
         return month;
     }
 
-    public void setMonth(ComboBox<String> month) {
+    public void setMonth(ComboBox<Month> month) {
         this.month = month;
     }
 

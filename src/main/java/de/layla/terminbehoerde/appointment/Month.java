@@ -1,16 +1,16 @@
 package de.layla.terminbehoerde.appointment;
 
 public enum Month {
-    JANUAR,
-    FEBRUAR,
-    MÄRZ,
-    APRIL,
-    MAI,
-    JUNI,
-    JULI,
-    AUGUST,
-    SEPTEMBER,
-    OKTOBER,
-    NOVEMBER,
-    DEZEMBER
+    Januar,
+    Februar,
+    März,
+    April,
+    Mai,
+    Juni,
+    Juli,
+    August,
+    September,
+    Oktober,
+    November,
+    Dezember
 }

@@ -1,6 +1,7 @@
 package de.layla.terminbehoerde.mainwindow;
 
 import de.layla.terminbehoerde.appointment.Month;
+import de.layla.terminbehoerde.selenium.AppointmentBooker;
 import de.layla.terminbehoerde.user.UserModel;
 import de.layla.terminbehoerde.appointment.AppointmentModel;
 import javafx.event.ActionEvent;
@@ -55,8 +56,7 @@ public class MainWindowController implements Initializable {
 
     @FXML
     public void book(ActionEvent actionEvent) {
-        System.out.println(fetchUserData());
-        System.out.println(fetchAppointmentData());
+        new AppointmentBooker(fetchAppointmentData(), fetchUserData());
     }
 
     public ComboBox<Month> getMonth() {

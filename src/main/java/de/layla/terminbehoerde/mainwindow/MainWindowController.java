@@ -30,9 +30,7 @@ public class MainWindowController implements Initializable {
     @FXML
     private TextField region;
     @FXML
-    private TextField timeEarliest;
-    @FXML
-    private TextField timeLatest;
+    private TextField time;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -49,10 +47,10 @@ public class MainWindowController implements Initializable {
     }
 
     private AppointmentModel fetchAppointmentData() {
-        if (timeEarliest.getText().equals("") && timeLatest.getText().equals("")) {
+        if (time.getText().equals("")) {
             return new AppointmentModel(this.region.getText(), this.day.getSelectionModel().getSelectedItem(), this.month.getSelectionModel().getSelectedItem());
         }
-        return new AppointmentModel(this.timeEarliest.getText(), this.timeLatest.getText(), this.region.getText(), this.day.getSelectionModel().getSelectedItem(), this.month.getSelectionModel().getSelectedItem());
+        return new AppointmentModel(this.time.getText(), this.region.getText(), this.day.getSelectionModel().getSelectedItem(), this.month.getSelectionModel().getSelectedItem());
     }
 
     @FXML
@@ -117,19 +115,11 @@ public class MainWindowController implements Initializable {
         this.region = region;
     }
 
-    public TextField getTimeEarliest() {
-        return timeEarliest;
+    public TextField getTime() {
+        return time;
     }
 
-    public void setTimeEarliest(TextField timeEarliest) {
-        this.timeEarliest = timeEarliest;
-    }
-
-    public TextField getTimeLatest() {
-        return timeLatest;
-    }
-
-    public void setTimeLatest(TextField timeLatest) {
-        this.timeLatest = timeLatest;
+    public void setTime(TextField time) {
+        this.time = time;
     }
 }

@@ -31,9 +31,8 @@
     <ComboBox fx:id="day" GridPane.columnIndex="1" GridPane.rowIndex="8" maxWidth="Infinity"/>
     <ComboBox fx:id="month" GridPane.columnIndex="2" GridPane.rowIndex="8" maxWidth="Infinity"/>
 
-    <Label text="Uhrzeit (von - bis)" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
-    <TextField fx:id="timeEarliest" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
-    <TextField fx:id="timeLatest" GridPane.columnIndex="2" GridPane.rowIndex="9"/>
+    <Label text="Uhrzeit" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+    <TextField fx:id="time" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
 
     <Button text="Buchen" fx:id="bookAppointment" GridPane.columnIndex="1" GridPane.rowIndex="12" onAction="#book"/>
 

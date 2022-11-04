@@ -2,15 +2,13 @@ package de.layla.terminbehoerde.appointment;
 
 public class AppointmentModel {
 
-    private String timeEarliest;
-    private String timeLatest;
+    private String time;
     private String region;
     private Integer day;
     private Month month;
 
-    public AppointmentModel(String timeEarliest, String timeLatest, String region, Integer day, Month month) {
-        this.timeEarliest = timeEarliest;
-        this.timeLatest = timeLatest;
+    public AppointmentModel(String time, String region, Integer day, Month month) {
+        this.time = time;
         this.region = region;
         this.day = day;
         this.month = month;
@@ -20,35 +18,25 @@ public class AppointmentModel {
         this.region = region;
         this.day = day;
         this.month = month;
-        this.timeEarliest = "00:00";
-        this.timeLatest = "24:00";
+        this.time = "00:00";
     }
 
     @Override
     public String toString() {
         return "AppointmentModel{" +
-                "timeEarliest='" + timeEarliest + '\'' +
-                ", timeLatest='" + timeLatest + '\'' +
+                "time='" + time + '\'' +
                 ", region='" + region + '\'' +
                 ", day=" + day +
                 ", month='" + month + '\'' +
                 '}';
     }
 
-    public String getTimeEarliest() {
-        return timeEarliest;
+    public String getTime() {
+        return time;
     }
 
-    public void setTimeEarliest(String timeEarliest) {
-        this.timeEarliest = timeEarliest;
-    }
-
-    public String getTimeLatest() {
-        return timeLatest;
-    }
-
-    public void setTimeLatest(String timeLatest) {
-        this.timeLatest = timeLatest;
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getRegion() {

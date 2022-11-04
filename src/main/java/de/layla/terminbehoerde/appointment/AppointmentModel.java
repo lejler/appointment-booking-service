@@ -6,19 +6,22 @@ public class AppointmentModel {
     private String region;
     private Integer day;
     private Month month;
+    private AppointmentType service;
 
-    public AppointmentModel(String time, String region, Integer day, Month month) {
+    public AppointmentModel(String time, String region, Integer day, Month month, AppointmentType service) {
         this.time = time;
         this.region = region;
         this.day = day;
         this.month = month;
+        this.service = service;
     }
 
-    public AppointmentModel(String region, Integer day, Month month) {
+    public AppointmentModel(String region, Integer day, Month month, AppointmentType service) {
         this.region = region;
         this.day = day;
         this.month = month;
         this.time = "00:00";
+        this.service = service;
     }
 
     @Override
@@ -62,5 +65,13 @@ public class AppointmentModel {
 
     public void setMonth(Month month) {
         this.month = month;
+    }
+
+    public AppointmentType getService() {
+        return service;
+    }
+
+    public void setService(AppointmentType service) {
+        this.service = service;
     }
 }

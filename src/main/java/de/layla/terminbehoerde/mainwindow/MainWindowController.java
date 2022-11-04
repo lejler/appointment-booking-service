@@ -1,5 +1,6 @@
 package de.layla.terminbehoerde.mainwindow;
 
+import de.layla.terminbehoerde.appointment.AppointmentType;
 import de.layla.terminbehoerde.appointment.Month;
 import de.layla.terminbehoerde.appointment.AppointmentBooker;
 import de.layla.terminbehoerde.user.UserModel;
@@ -32,6 +33,8 @@ public class MainWindowController implements Initializable {
     private TextField region;
     @FXML
     private TextField time;
+    @FXML
+    private ComboBox<AppointmentType> service;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -41,6 +44,9 @@ public class MainWindowController implements Initializable {
         for (int i = 0; i < Month.values().length; i++) {
             this.month.getItems().add(Month.values()[i]);
         }
+        for (int i = 0; i < AppointmentType.values().length; i++) {
+            this.service.getItems().add(AppointmentType.values()[i]);
+        }
     }
 
     private UserModel fetchUserData() {
@@ -49,9 +55,9 @@ public class MainWindowController implements Initializable {
 
     private AppointmentModel fetchAppointmentData() {
         if (time.getText().equals("") || time == null) {
-            return new AppointmentModel(this.region.getText(), this.day.getSelectionModel().getSelectedItem(), this.month.getSelectionModel().getSelectedItem());
+            return new AppointmentModel(this.region.getText(), this.day.getSelectionModel().getSelectedItem(), this.month.getSelectionModel().getSelectedItem(), this.service.getSelectionModel().getSelectedItem());
         }
-        return new AppointmentModel(this.time.getText(), this.region.getText(), this.day.getSelectionModel().getSelectedItem(), this.month.getSelectionModel().getSelectedItem());
+        return new AppointmentModel(this.time.getText(), this.region.getText(), this.day.getSelectionModel().getSelectedItem(), this.month.getSelectionModel().getSelectedItem(), this.service.getSelectionModel().getSelectedItem());
     }
 
     @FXML

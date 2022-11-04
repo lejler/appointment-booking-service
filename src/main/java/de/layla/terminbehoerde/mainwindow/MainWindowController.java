@@ -1,7 +1,7 @@
 package de.layla.terminbehoerde.mainwindow;
 
 import de.layla.terminbehoerde.appointment.Month;
-import de.layla.terminbehoerde.selenium.AppointmentBooker;
+import de.layla.terminbehoerde.appointment.AppointmentBooker;
 import de.layla.terminbehoerde.user.UserModel;
 import de.layla.terminbehoerde.appointment.AppointmentModel;
 import javafx.event.ActionEvent;
@@ -48,7 +48,7 @@ public class MainWindowController implements Initializable {
     }
 
     private AppointmentModel fetchAppointmentData() {
-        if (time.getText().equals("")) {
+        if (time.getText().equals("") || time == null) {
             return new AppointmentModel(this.region.getText(), this.day.getSelectionModel().getSelectedItem(), this.month.getSelectionModel().getSelectedItem());
         }
         return new AppointmentModel(this.time.getText(), this.region.getText(), this.day.getSelectionModel().getSelectedItem(), this.month.getSelectionModel().getSelectedItem());
@@ -56,7 +56,11 @@ public class MainWindowController implements Initializable {
 
     @FXML
     public void book(ActionEvent actionEvent) {
-        new AppointmentBooker(fetchAppointmentData(), fetchUserData());
+        Runnable runnable = () -> {
+            new AppointmentBooker(fetchAppointmentData(), fetchUserData());
+        };
+        Thread t = new Thread(runnable);
+        t.start();
     }
 
     public ComboBox<Month> getMonth() {

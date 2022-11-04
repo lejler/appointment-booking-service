@@ -1,4 +1,4 @@
-package de.layla.terminbehoerde.selenium;
+package de.layla.terminbehoerde.appointment;
 
 import de.layla.terminbehoerde.appointment.AppointmentModel;
 import de.layla.terminbehoerde.appointment.Month;
@@ -60,7 +60,7 @@ public class AppointmentBooker {
             try {
                 driver.get(selectChosenMonth(appointmentModel.getMonth()).findElement(By.xpath("//a[text()[contains(., '" + day + "')]]")).getAttribute("href"));
                 appointmentBookable = true;
-            } catch (NullPointerException e) {
+            } catch (NullPointerException | NoSuchElementException e) {
                 driver.navigate().refresh();
             }
         }

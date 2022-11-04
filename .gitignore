@@ -1,6 +1,8 @@
 # Compiled class file
 *.class
 
+TODO.md
+
 .idea
 .cmd
 mvnw

@@ -8,6 +8,7 @@ module de.layla.terminbehoerde {
     requires org.seleniumhq.selenium.api;
     requires io.github.bonigarcia.webdrivermanager;
     requires org.seleniumhq.selenium.chrome_driver;
+    requires org.seleniumhq.selenium.support;
 
     opens de.layla.terminbehoerde to javafx.fxml;
     exports de.layla.terminbehoerde;

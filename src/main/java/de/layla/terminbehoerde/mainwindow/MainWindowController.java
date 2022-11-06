@@ -55,13 +55,18 @@ public class MainWindowController implements Initializable {
 
     private AppointmentModel fetchAppointmentData() {
         if (time.getText().equals("") || time == null) {
-            return new AppointmentModel(this.region.getText(), this.day.getSelectionModel().getSelectedItem(), this.month.getSelectionModel().getSelectedItem(), this.service.getSelectionModel().getSelectedItem());
+            return new AppointmentModel(this.region.getText(), this.day.getSelectionModel().getSelectedItem(),
+                                                               this.month.getSelectionModel().getSelectedItem(),
+                                                               this.service.getSelectionModel().getSelectedItem());
         }
-        return new AppointmentModel(this.time.getText(), this.region.getText(), this.day.getSelectionModel().getSelectedItem(), this.month.getSelectionModel().getSelectedItem(), this.service.getSelectionModel().getSelectedItem());
+        return new AppointmentModel(this.time.getText(), this.region.getText(),
+                                                         this.day.getSelectionModel().getSelectedItem(),
+                                                         this.month.getSelectionModel().getSelectedItem(),
+                                                         this.service.getSelectionModel().getSelectedItem());
     }
 
     @FXML
-    public void book(ActionEvent actionEvent) {
+    private void book(ActionEvent actionEvent) {
         Runnable runnable = () -> {
             new AppointmentBooker(fetchAppointmentData(), fetchUserData());
         };

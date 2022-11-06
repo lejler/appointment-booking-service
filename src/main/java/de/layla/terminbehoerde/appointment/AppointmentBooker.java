@@ -47,7 +47,7 @@ public class AppointmentBooker {
         driver.quit();
     }
 
-    //selects actual appointment
+    // selects actual appointment
     private void selectChosenTime(String time) {
         selectChosenDay(appointmentModel.getDay());
         WebElement timeElement = driver.findElement(By.xpath("//th[text()[contains(., '" + time + "')]]"));

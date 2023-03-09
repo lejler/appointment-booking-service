@@ -1,7 +1,5 @@
 package de.layla.terminbehoerde.appointment;
 
-import de.layla.terminbehoerde.appointment.AppointmentModel;
-import de.layla.terminbehoerde.appointment.Month;
 import de.layla.terminbehoerde.user.UserModel;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;

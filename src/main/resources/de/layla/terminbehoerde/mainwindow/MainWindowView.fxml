@@ -25,14 +25,11 @@
     <TextField fx:id="phoneNumber" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3"/>
 
     <Label text="Service" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
-    <ComboBox fx:id="service" GridPane.columnIndex="1" GridPane.rowIndex="7" GridPane.columnSpan="2" maxWidth="Infinity"/>
 
     <Label text="Bezirk" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
     <TextField fx:id="region" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8"/>
 
     <Label text="Datum" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
-    <ComboBox fx:id="day" GridPane.columnIndex="1" GridPane.rowIndex="9" maxWidth="Infinity"/>
-    <ComboBox fx:id="month" GridPane.columnIndex="2" GridPane.rowIndex="9" maxWidth="Infinity"/>
 
     <Label text="Uhrzeit" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
     <TextField fx:id="time" GridPane.columnIndex="1" GridPane.rowIndex="10"/>

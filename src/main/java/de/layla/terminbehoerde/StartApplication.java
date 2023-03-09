@@ -1,6 +1,7 @@
 package de.layla.terminbehoerde;
 
 import de.layla.terminbehoerde.mainwindow.MainWindow;
+import de.layla.terminbehoerde.utils.OptionsGetter;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

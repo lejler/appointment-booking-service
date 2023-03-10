@@ -1,7 +1,5 @@
 package de.layla.terminbehoerde.mainwindow;
 
-import de.layla.terminbehoerde.appointment.AppointmentType;
-import de.layla.terminbehoerde.appointment.Month;
 import de.layla.terminbehoerde.appointment.AppointmentBooker;
 import de.layla.terminbehoerde.user.UserModel;
 import de.layla.terminbehoerde.appointment.AppointmentModel;
@@ -11,14 +9,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
@@ -42,12 +40,36 @@ public class MainWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         // TODO: customize datepicker (?)
-
+        ArrayList<String> months = OptionsGetter.getMonthsWithoutYear();
+        DatePicker datePicker = new DatePicker();
+        datePicker.setDayCellFactory(picker -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate localDate, boolean empty) {
+                super.updateItem(localDate, empty);
+                boolean isEnabled = false;
+                System.out.println(localDate.getMonth().getDisplayName(TextStyle.FULL, Locale.GERMAN));
+                for (String month : months) {
+                    if (localDate.getMonth().getDisplayName(TextStyle.FULL, Locale.GERMAN).equalsIgnoreCase(month)) {
+                        isEnabled = true;
+                        break;
+                    }
+                }
+                setDisable(!isEnabled);
+                if (!isEnabled) {
+                    setStyle("-fx-background-color: #ffc0cb;");
+                } else {
+                    setStyle("");
+                }
+            }
+        });
+        root.add(datePicker, 1, 9);
         // initialize months
+        /*
         ObservableList<String> monthItems = FXCollections.observableArrayList(OptionsGetter.getMonths());
         ComboBox<String> comboBox = new ComboBox<>();
         comboBox.setItems(monthItems);
         root.add(comboBox, 2, 9);
+        */
     }
 
     private UserModel fetchUserData() {

@@ -39,7 +39,6 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        // TODO: customize datepicker (?)
         ArrayList<String> months = OptionsGetter.getMonthsWithoutYear();
         DatePicker datePicker = new DatePicker();
         datePicker.setDayCellFactory(picker -> new DateCell() {

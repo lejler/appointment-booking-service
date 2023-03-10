@@ -11,22 +11,31 @@ public class OptionsGetter {
     public static void main(String[] args) {
     }
 
-    public static String[] getMonths() {
+    public static String[] getMonthsWithYears() {
         DriverHelper.getInstance().get(serviceListUrl);
-        String[] months = DriverHelper.getInstance().findElements(By.className("month")).stream().map(e -> e.getAttribute("innerHTML")).toArray(String[]::new);
+        String[] monthsWithYears = DriverHelper.getInstance().findElements(By.className("month")).stream().map(e -> e.getAttribute("innerHTML")).toArray(String[]::new);
         DriverHelper.getInstance().quit();
+        return monthsWithYears;
+    }
+
+    public static ArrayList<String> getMonths() {
+        ArrayList<String> months = new ArrayList<>();
+        for (String entry : getMonthsWithYears()) {
+            months.add(entry.replaceAll(" .*", ""));
+        }
         return months;
     }
 
-    public static ArrayList<String> getMonthsWithoutYear() {
-        ArrayList<String> monthsWithoutYear = new ArrayList<>();
-        for (String month : getMonths()) {
-            monthsWithoutYear.add(month.replaceAll(" .*", ""));
+    public static ArrayList<String> getYears() {
+        ArrayList<String> years = new ArrayList<>();
+        for (String entry : getMonthsWithYears()) {
+            String[] result = entry.split(" ");
+            years.add(result[1]);
         }
-        for (String m : monthsWithoutYear) {
-            System.out.println(m);
+        for (String y : years) {
+            System.out.println(y);
         }
-        return monthsWithoutYear;
+        return years;
     }
 
 }

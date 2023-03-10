@@ -25,6 +25,7 @@
     <TextField fx:id="phoneNumber" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3"/>
 
     <Label text="Service" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+    <ComboBox fx:id="serviceSelection" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
 
     <Label text="Bezirk" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
     <TextField fx:id="region" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8"/>

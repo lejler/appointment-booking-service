@@ -1,6 +1,7 @@
 package de.layla.terminbehoerde.mainwindow;
 
 import de.layla.terminbehoerde.appointment.AppointmentBooker;
+import de.layla.terminbehoerde.appointment.AppointmentType;
 import de.layla.terminbehoerde.user.UserModel;
 import de.layla.terminbehoerde.appointment.AppointmentModel;
 import de.layla.terminbehoerde.utils.OptionsGetter;
@@ -32,13 +33,20 @@ public class MainWindowController implements Initializable {
     @FXML
     private TextField phoneNumber;
     @FXML
+    private ComboBox<AppointmentType> serviceSelection;
+    @FXML
     private TextField region;
     @FXML
     private TextField time;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        // filling service selection
+        for (AppointmentType a : AppointmentType.values()) {
+            this.serviceSelection.getItems().add(a);
+        }
+        
+        // customized DatePicker
         ArrayList<String> months = OptionsGetter.getMonthsWithoutYear();
         DatePicker datePicker = new DatePicker();
         datePicker.setDayCellFactory(picker -> new DateCell() {
@@ -62,13 +70,6 @@ public class MainWindowController implements Initializable {
             }
         });
         root.add(datePicker, 1, 9);
-        // initialize months
-        /*
-        ObservableList<String> monthItems = FXCollections.observableArrayList(OptionsGetter.getMonths());
-        ComboBox<String> comboBox = new ComboBox<>();
-        comboBox.setItems(monthItems);
-        root.add(comboBox, 2, 9);
-        */
     }
 
     private UserModel fetchUserData() {

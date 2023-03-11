@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.layla</groupId>
-    <artifactId>TerminBehoerde</artifactId>
+    <artifactId>appoinment-booking-service</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>termin-behoerde</name>
+    <name>AppointmentBookingService</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

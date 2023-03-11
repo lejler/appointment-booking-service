@@ -14,6 +14,7 @@ public class MainWindow {
         Scene scene = null;
         try {
             scene = new Scene(fxmlLoader.load(), 400, 350);
+            scene.getStylesheets().add(getClass().getResource("css/styles.css").toExternalForm());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

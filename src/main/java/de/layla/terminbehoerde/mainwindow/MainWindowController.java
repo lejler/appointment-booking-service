@@ -12,12 +12,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
@@ -45,27 +48,20 @@ public class MainWindowController implements Initializable {
         for (AppointmentType a : AppointmentType.values()) {
             this.serviceSelection.getItems().add(a);
         }
-        
         // customized DatePicker
-        ArrayList<String> months = OptionsGetter.getMonthsWithoutYear();
+        ArrayList<String> months = OptionsGetter.getMonths();
+        LocalDate minDate = LocalDate.of(Integer.parseInt(OptionsGetter.getYears().get(0)),
+                Objects.requireNonNull(OptionsGetter.convertStringToMonth(months.get(0))), 1);
+        LocalDate maxDate = LocalDate.of(Integer.parseInt(OptionsGetter.getYears().get(1)),
+                Objects.requireNonNull(OptionsGetter.convertStringToMonth(months.get(1))),
+                OptionsGetter.convertStringToMonth(months.get(1)).length(false));
         DatePicker datePicker = new DatePicker();
         datePicker.setDayCellFactory(picker -> new DateCell() {
             @Override
             public void updateItem(LocalDate localDate, boolean empty) {
                 super.updateItem(localDate, empty);
-                boolean isEnabled = false;
-                System.out.println(localDate.getMonth().getDisplayName(TextStyle.FULL, Locale.GERMAN));
-                for (String month : months) {
-                    if (localDate.getMonth().getDisplayName(TextStyle.FULL, Locale.GERMAN).equalsIgnoreCase(month)) {
-                        isEnabled = true;
-                        break;
-                    }
-                }
-                setDisable(!isEnabled);
-                if (!isEnabled) {
-                    setStyle("-fx-background-color: #ffc0cb;");
-                } else {
-                    setStyle("");
+                if (localDate.isBefore(minDate) || localDate.isAfter(maxDate)) {
+                    setDisable(true);
                 }
             }
         });

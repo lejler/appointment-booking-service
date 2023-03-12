@@ -1,22 +1,20 @@
-package de.layla.terminbehoerde.mainwindow;
+package de.layla.abs.mainwindow;
 
-import de.layla.terminbehoerde.appointment.AppointmentBooker;
-import de.layla.terminbehoerde.appointment.AppointmentType;
-import de.layla.terminbehoerde.user.UserModel;
-import de.layla.terminbehoerde.appointment.AppointmentModel;
-import de.layla.terminbehoerde.utils.OptionsGetter;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import de.layla.abs.appointment.AppointmentBooker;
+import de.layla.abs.appointment.AppointmentType;
+import de.layla.abs.user.UserModel;
+import de.layla.abs.appointment.AppointmentModel;
+import de.layla.abs.utils.OptionsGetter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -49,12 +47,17 @@ public class MainWindowController implements Initializable {
             this.serviceSelection.getItems().add(a);
         }
         // customized DatePicker
+        OptionsGetter.getMonthsWithYears();
         ArrayList<String> months = OptionsGetter.getMonths();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM", Locale.GERMAN);
+
         LocalDate minDate = LocalDate.of(Integer.parseInt(OptionsGetter.getYears().get(0)),
-                Objects.requireNonNull(OptionsGetter.convertStringToMonth(months.get(0))), 1);
+                Month.from(formatter.parse(months.get(0))), 1);
+
         LocalDate maxDate = LocalDate.of(Integer.parseInt(OptionsGetter.getYears().get(1)),
-                Objects.requireNonNull(OptionsGetter.convertStringToMonth(months.get(1))),
-                OptionsGetter.convertStringToMonth(months.get(1)).length(false));
+                Month.from(formatter.parse(months.get(1))),
+                Month.from(formatter.parse(months.get(1))).length(false));
+
         DatePicker datePicker = new DatePicker();
         datePicker.setDayCellFactory(picker -> new DateCell() {
             @Override
@@ -65,7 +68,7 @@ public class MainWindowController implements Initializable {
                 }
             }
         });
-        root.add(datePicker, 1, 9);
+        this.root.add(datePicker, 1, 9);
     }
 
     private UserModel fetchUserData() {

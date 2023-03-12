@@ -10,12 +10,12 @@ module de.layla.terminbehoerde {
     requires org.seleniumhq.selenium.chrome_driver;
     requires org.seleniumhq.selenium.support;
 
-    opens de.layla.terminbehoerde to javafx.fxml;
-    exports de.layla.terminbehoerde;
-    exports de.layla.terminbehoerde.appointment;
-    opens de.layla.terminbehoerde.appointment to javafx.fxml;
-    exports de.layla.terminbehoerde.mainwindow;
-    opens de.layla.terminbehoerde.mainwindow to javafx.fxml;
-    exports de.layla.terminbehoerde.user;
-    opens de.layla.terminbehoerde.user to javafx.fxml;
+    opens de.layla.abs to javafx.fxml;
+    exports de.layla.abs;
+    exports de.layla.abs.appointment;
+    opens de.layla.abs.appointment to javafx.fxml;
+    exports de.layla.abs.mainwindow;
+    opens de.layla.abs.mainwindow to javafx.fxml;
+    exports de.layla.abs.user;
+    opens de.layla.abs.user to javafx.fxml;
 }

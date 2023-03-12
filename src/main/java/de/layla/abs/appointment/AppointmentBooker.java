@@ -1,10 +1,10 @@
-package de.layla.terminbehoerde.appointment;
+package de.layla.abs.appointment;
 
-import de.layla.terminbehoerde.user.UserModel;
-import de.layla.terminbehoerde.utils.DriverHelper;
+import de.layla.abs.user.UserModel;
+import de.layla.abs.utils.DriverHelper;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
+import java.time.Month;
 
 public class AppointmentBooker {
 
@@ -12,6 +12,7 @@ public class AppointmentBooker {
     private final UserModel userModel;
     private boolean appointmentBookable = false;
     private String serviceUrl;
+    private final WebDriver driver = DriverHelper.getInstance();
 
     public AppointmentBooker(AppointmentModel appointmentModel, UserModel userModel) {
         this.appointmentModel = appointmentModel;
@@ -26,25 +27,25 @@ public class AppointmentBooker {
 
     private void fillOutForm() {
         selectChosenTime(appointmentModel.getTime());
-        DriverHelper.getInstance().findElement(By.id("agbgelesen")).click();
-        DriverHelper.getInstance().findElement(By.name("familyName")).sendKeys(userModel.getName());
-        DriverHelper.getInstance().findElement(By.name("email")).sendKeys(userModel.getMailAddress());
+        driver.findElement(By.id("agbgelesen")).click();
+        driver.findElement(By.name("familyName")).sendKeys(userModel.getName());
+        driver.findElement(By.name("email")).sendKeys(userModel.getMailAddress());
         try {
-            DriverHelper.getInstance().findElement(By.name("telephone")).sendKeys(userModel.getPhoneNumber());
+            driver.findElement(By.name("telephone")).sendKeys(userModel.getPhoneNumber());
         } catch (NoSuchElementException ignored) {
         }
         Select surveyAccepted = new Select(DriverHelper.getInstance().findElement(By.name("surveyAccepted")));
         surveyAccepted.selectByVisibleText("Nicht zustimmen");
 
-        DriverHelper.getInstance().findElement(By.id("register_submit")).click();
-        DriverHelper.getInstance().quit();
+        driver.findElement(By.id("register_submit")).click();
+        driver.quit();
     }
 
     // selects actual appointment
     private void selectChosenTime(String time) {
         selectChosenDay(appointmentModel.getDay());
-        WebElement timeElement = DriverHelper.getInstance().findElement(By.xpath("//th[text()[contains(., '" + time + "')]]"));
-        DriverHelper.getInstance().get(timeElement.findElement(By.xpath("//th[@class='buchbar']/following-sibling::td")).findElement(By.tagName("a")).getAttribute("href"));
+        WebElement timeElement = driver.findElement(By.xpath("//th[text()[contains(., '" + time + "')]]"));
+        driver.get(timeElement.findElement(By.xpath("//th[@class='buchbar']/following-sibling::td")).findElement(By.tagName("a")).getAttribute("href"));
     }
 
     // redirects driver to booking page of chosen day
@@ -52,24 +53,24 @@ public class AppointmentBooker {
         getCalendarPage();
         while (!appointmentBookable) {
             try {
-                DriverHelper.getInstance().get(selectChosenMonth(appointmentModel.getMonth()).findElement(By.xpath("//a[text()[contains(., '" + day + "')]]")).getAttribute("href"));
+                driver.get(selectChosenMonth(appointmentModel.getMonth()).findElement(By.xpath("//a[text()[contains(., '" + day + "')]]")).getAttribute("href"));
                 appointmentBookable = true;
             } catch (NullPointerException | NoSuchElementException e) {
-                DriverHelper.getInstance().navigate().refresh();
+                driver.navigate().refresh();
             }
         }
     }
 
     // returns table element of chosen month
     private WebElement selectChosenMonth(Month month) {
-        WebElement tmp = DriverHelper.getInstance().findElement(By.xpath("//*[text()[contains(., '" + month.name() + "')]]"));
-        return (WebElement) ((JavascriptExecutor) DriverHelper.getInstance()).executeScript(
+        WebElement tmp = driver.findElement(By.xpath("//*[text()[contains(., '" + month.name() + "')]]"));
+        return (WebElement) ((JavascriptExecutor) driver).executeScript(
                 "return arguments[0].parentNode.parentNode.parentNode", tmp
         );
     }
 
     private void getCalendarPage() {
-        DriverHelper.getInstance().get(serviceUrl);
+        driver.get(serviceUrl);
     }
 
     public AppointmentModel getAppointmentModel() {

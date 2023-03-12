@@ -1,4 +1,4 @@
-package de.layla.terminbehoerde.mainwindow;
+package de.layla.abs.mainwindow;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

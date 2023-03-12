@@ -1,4 +1,4 @@
-package de.layla.terminbehoerde.user;
+package de.layla.abs.user;
 
 public class UserModel {
 

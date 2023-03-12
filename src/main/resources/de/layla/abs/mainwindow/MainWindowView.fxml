@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <GridPane fx:id="root" xmlns:fx="http://javafx.com/fxml"
-          fx:controller="de.layla.terminbehoerde.mainwindow.MainWindowController" hgap="10" vgap="10">
+          fx:controller="de.layla.abs.mainwindow.MainWindowController" hgap="10" vgap="10">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>

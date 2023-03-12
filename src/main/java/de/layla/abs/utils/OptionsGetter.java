@@ -1,4 +1,4 @@
-package de.layla.terminbehoerde.utils;
+package de.layla.abs.utils;
 
 import org.openqa.selenium.By;
 
@@ -34,37 +34,4 @@ public class OptionsGetter {
         }
         return years;
     }
-
-    public static Month convertStringToMonth(String month) {
-        switch (month) {
-            case "Januar":
-                return Month.JANUARY;
-            case "Februar":
-                return Month.FEBRUARY;
-            case "März":
-                return Month.MARCH;
-            case "April":
-                return Month.APRIL;
-            case "Mai":
-                return Month.MAY;
-            case "Juni":
-                return Month.JUNE;
-            case "Juli":
-                return Month.JULY;
-            case "August":
-                return Month.AUGUST;
-            case "September":
-                return Month.SEPTEMBER;
-            case "Oktober":
-                return Month.OCTOBER;
-            case "November":
-                return Month.NOVEMBER;
-            case "Dezember":
-                return Month.DECEMBER;
-            default:
-                System.out.println("Invalid month");
-                return null;
-        }
-    }
-
 }

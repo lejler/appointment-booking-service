@@ -1,4 +1,4 @@
-package de.layla.terminbehoerde.appointment;
+package de.layla.abs.appointment;
 
 public enum Month {
     Januar,

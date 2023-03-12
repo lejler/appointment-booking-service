@@ -1,4 +1,4 @@
-package de.layla.terminbehoerde.utils;
+package de.layla.abs.utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

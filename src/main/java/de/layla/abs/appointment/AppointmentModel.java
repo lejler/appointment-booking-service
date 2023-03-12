@@ -1,4 +1,6 @@
-package de.layla.terminbehoerde.appointment;
+package de.layla.abs.appointment;
+
+import java.time.Month;
 
 public class AppointmentModel {
 
